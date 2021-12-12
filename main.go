@@ -118,10 +118,10 @@ func checkDevices(macAddresses []string) {
 }
 
 func getMacAddresses() []string {
-	macAddresses := strings.Split(*macPtr, ",")
-	if len(macAddresses) < 1 {
-		log.Fatalln("No Bluetooth MAC addresses has been defined (use --mac parameter)")
+	if *macPtr == "" {
+		log.Fatalln("No Bluetooth MAC addresses have been defined (use --mac parameter)")
 	}
+	macAddresses := strings.Split(*macPtr, ",")
 
 	for _, mac := range macAddresses {
 		if re.MatchString(mac) == false {

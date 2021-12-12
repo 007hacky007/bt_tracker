@@ -42,7 +42,7 @@ func main() {
 	quit := make(chan bool)
 	go btChecker(macAddresses, quit)
 	http.HandleFunc("/", handler)
-	log.Println("Listing on port: " + string(*portPtr))
+	log.Println("Listening on port:", *portPtr)
 	err := http.ListenAndServe(":"+*portPtr, nil)
 	if err != nil {
 		log.Fatalln("Can not listen:", err.Error())
